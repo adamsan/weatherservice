@@ -1,8 +1,6 @@
 package com.codecool.weatherservice;
 
-import com.codecool.weatherservice.responsemodel.Quote;
 import com.codecool.weatherservice.responsemodel.WeatherData;
-import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -18,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
  * http://api.openweathermap.org/data/2.5/weather?q=Budapest&appid={api_key}&units=metric&lang=hu
  */
 @SpringBootApplication
+@EnableCaching
+@EnableScheduling
 public class WeatherServiceApplication {
 
     @Value("${api_key}")
